@@ -1,0 +1,30 @@
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<div style="margin: 1rem">
+  <h2>Update Exercise</h2>
+  <div style="margin-left: 2rem">
+    <form action="/update">
+        <input type="hidden" name="id" value={{id}}>
+        <label class="col-sm-3 col-form-label">Exercise:</label>
+          <input type="text" name="name" id="exercise" value="{{name}}"><br />
+        <label class="col-sm-3 col-form-label">Reps:</label>
+          <input type="number" name="reps" id="reps" value="{{reps}}"><br />
+        <label class="col-sm-3 col-form-label">Weight:</label>
+          <input type="number" name="weight" id="weight" value="{{weight}}"><br />
+        <label class="col-sm-3 col-form-label">Weight Units:</label>
+        {{#if lbs}}
+          <input id="lbs" type="radio" name="lbs" value="1" checked>lbs
+          <input type="radio" name="lbs" value="0">kgs<br />
+          {{else}}
+          <input id="lbs" type="radio" name="lbs" value="1">lbs
+          <input type="radio" name="lbs" value="0" checked>kgs<br />
+        {{/if}}
+        <label class="col-sm-3 col-form-label">Date:</label>
+          <input type="date" name="date" id="date" value="{{date}}"><br />
+        <button type="submit" id="updateExercise" class="btn btn-primary">Update</button>
+    </form>
+    <br />
+    <a href="/"><button>Go Back</button></a>
+    </div>
+</div>
+
+<script src="script.js"></script>

@@ -1,0 +1,56 @@
+<!--
+   Name: Amy Stockinger
+   CS 290
+   2/12/2019 
+-->
+
+<!DOCTYPE html>
+    <head>
+        <title>POST Your Name</title>
+        <script>
+                document.addEventListener('DOMContentLoaded', bindButtons);
+                function bindButtons(){
+                    document.getElementById('submitData').addEventListener('click', function(e){
+                        var req = new XMLHttpRequest();
+                        var payload = {
+                            user_data: null
+                        };
+                        payload.user_data = document.getElementById('userData').value;
+                        req.open('POST', 'http://httpbin.org/post', true);
+                        req.setRequestHeader('Content-Type', 'application/json');
+                        req.addEventListener('load', function(){
+                            if(req.status >= 200 && req.status < 400){
+                                var response = JSON.parse(JSON.parse(req.responseText).data);
+                                document.getElementById('dataRes').textContent = response.user_data;
+                            }
+                            else{
+                                console.log("Error in request: " + request.statusText);
+                            }
+                        });
+                        req.send(JSON.stringify(payload));
+                        e.preventDefault();
+                    });
+                }
+        </script>
+    </head>
+    <body>
+        <form method="post">
+            <fieldset>
+                <label>Enter data to send:</label>
+                <fieldset>
+                <label>Some data: <input type="text" id="userData"></label>
+                </br>
+                <button type="submit" id="submitData">Submit</button>
+                </fieldset>
+            </fieldset>
+        </form>
+
+        <table>
+            <tr>
+                <th>Your Data:
+            </tr>
+                <td id="dataRes">
+            </tr>
+        </table>
+    </body>
+</html>

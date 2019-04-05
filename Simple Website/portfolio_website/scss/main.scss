@@ -1,0 +1,395 @@
+@import "_config";
+@import "_mobile";
+@import url("https://fonts.googleapis.com/css?family=Kaushan+Script");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  @include background;
+  background: $primary-color;
+  color: #ffff;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", "Tahoma", Geneva, Verdana, sans-serif;
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-weight: 400;
+  &.lg-heading {
+    padding: 0.8rem;
+    font-size: 4.5rem;
+    font-family: "Kaushan Script", cursive;
+  }
+  &.sm-heading {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    padding: 0.2rem 1rem;
+    background-image: linear-gradient(to right, rgba(lighten($primary-color, 10), 0.4), rgba(255, 0, 0, 0));
+  }
+}
+
+.container {
+  g {
+    stroke: none;
+    fill: none;
+    fill-rule: none;
+    fill-opacity: 0;
+  }
+  text {
+    stroke:white;
+    fill: #ffff;
+    font-weight: normal;
+    font-family: "Kaushan Script", cursive;
+    font-size: 10rem;
+    .lname {
+      stroke: $secondary-color;
+      fill: $secondary-color;
+    }
+  }
+  svg {
+    max-width: 45rem;
+    width: 100%;
+    height: auto;
+    stroke: #ffff;
+    stroke-width: 2;
+    .lname {
+      stroke: $secondary-color;
+    }
+  }
+  tspan {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: -1000;
+  }
+  tspan {
+    :nth-of-type(1) {
+      animation: draw 2000ms 150ms forwards, fillIn 150ms 2.9s forwards;
+    }
+    :nth-of-type(2) {
+      animation: draw 2000ms 300ms forwards, fillIn 150ms 3s forwards;
+    }
+    :nth-of-type(3) {
+      animation: draw 2000ms 450ms forwards, fillIn 150ms 3.1s forwards;
+    }
+    :nth-of-type(4) {
+      animation: draw 2000ms 600ms forwards, fillIn 150ms 3.2s forwards;
+    }
+    :nth-of-type(5) {
+      animation: draw 2000ms 750ms forwards, fillIn 150ms 3.4s forwards;
+    }
+    :nth-of-type(6) {
+      animation: draw 2000ms 900ms forwards, fillIn 150ms 3.5s forwards;
+    }
+    :nth-of-type(7) {
+      animation: draw 2000ms 1150ms forwards, fillIn 150ms 3.6s forwards;
+    }
+    :nth-of-type(8) {
+      animation: draw 2000ms 1300ms forwards, fillIn 150ms 3.7s forwards;
+    }
+    :nth-of-type(9) {
+      animation: draw 2000ms 1450ms forwards, fillIn 150ms 3.8s forwards;
+    }
+    :nth-of-type(10) {
+      animation: draw 2000ms 1600ms forwards, fillIn 150ms 3.9s forwards;
+    }
+    :nth-of-type(11) {
+      animation: draw 2000ms 1750ms forwards, fillIn 150ms 4s forwards;
+    }
+    :nth-of-type(12) {
+      animation: draw 2000ms 1900ms forwards, fillIn 150ms 4.1s forwards;
+    }
+    :nth-of-type(13) {
+      animation: draw 2000ms 2050ms forwards, fillIn 150ms 4.2s forwards;
+    }
+    :nth-of-type(14) {
+      animation: draw 2000ms 2200ms forwards, fillIn 150ms 4.3s forwards;
+    }
+  }
+}
+
+@keyframes draw {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes fillIn {
+  to {
+    fill-opacity: 1;
+  }
+}
+
+a {
+  color: #ffff;
+  text-decoration: none;
+}
+
+.header-menu {
+  z-index: 2;
+  width: 100%;
+  position: absolute;
+  font-size: 1.1rem;
+  padding-top: 0.3rem;
+  background: rgba(darken($primary-color, 10), 0.6);
+  .current{
+    color: $secondary_color;
+  }
+  a{
+    display: inline-block;
+    padding: 0.5rem;
+    &:hover{
+      color: $secondary_color;
+      @include easeOut();
+      transform: translateY(-0.1rem);
+    }
+  }
+  .nav-right{
+    float: right;
+    margin-right: 1.6rem;
+  }
+  .navmenu {
+    margin-left: 1.6rem;
+  }
+}
+
+.text-secondary {
+  color: $secondary-color;
+}
+
+main {
+  padding: 4rem;
+  min-height: calc(100vh - 40px);
+  &#home {
+    overflow: hidden;
+    h1 {
+      margin-top: 20vh;
+    }
+  }
+  overflow: hidden;
+}
+
+
+// https://www.w3schools.com/howto/howto_js_slideshow.asp
+.carousel{
+  width: 700px;
+  height: 200px;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+  .caption{
+    z-index: 10;
+    color: white;
+    right: 16px;
+    bottom: 8px;
+    position: absolute;
+  }
+  .mySlides {
+    display: none;
+  }
+  .prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    transition: 0.6s ease;
+  }
+  .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+  .prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+  }
+  .fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+  }
+  
+  @-webkit-keyframes fade {
+    from {opacity: .4} 
+    to {opacity: 1}
+  }
+  
+  @keyframes fade {
+    from {opacity: .4} 
+    to {opacity: 1}
+  }
+}
+
+.about-info{
+  background: lighten(black, 20);
+  opacity: 0.9;
+  text-align: left;
+  padding: 0.2rem 1rem;
+  display: grid;
+  grid-template-areas:
+  'bioimage bio';
+  grid-template-columns: repeat(1, 2fr);
+  border-bottom: $secondary-color 3px solid;
+  grid-gap: 0.5rem;
+}
+.bioimage{
+  grid-area: bioimage;
+  margin: auto;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+}
+.bio{
+  .bio-heading{
+    color: $secondary-color;
+    font-weight: bold;
+    font-size: 1.3rem;
+  }
+  .bio-text{
+    font-size: 0.8rem;
+  }
+  grid-area: bio;
+  font-size: 1rem;
+}
+
+.skills{
+  .skills-heading{
+    color: $secondary-color;
+    font-weight: bold;
+    font-size: 1.3rem;
+  }
+  margin-top: 0.5rem;
+  background: lighten(black, 20);
+  opacity: 0.9;
+  padding: 0.4rem 1rem;
+  display: right;
+}
+
+.project{
+  padding: 1rem;
+}
+
+.item {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-areas:
+  "proj-pic proj-desc";
+  padding: 1rem;
+  margin: auto;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  border: 1px solid $secondary-color;
+  .proj-pic {
+    grid-area: proj-pic;
+    &:hover {
+      @include easeOut
+    }
+  }
+  .btn-light{
+    width: 200px;
+  }
+  .btn-dark{
+    width: 200px;
+  }
+  .proj-desc{
+    grid-area: proj-desc;
+    width: 100%;
+    overflow-y: scroll;
+    height: 245px;
+    background: darken($primary-color, 10);
+    font-size: 12px;
+  }
+}
+
+
+.btn {
+  display: block;
+  padding: 0.5rem 1rem;
+  border: 0;
+  margin-bottom: 0.3rem;
+  &:hover {
+    background: $secondary-color;
+  }
+}
+
+.btn-dark {
+  @extend .btn;
+  background: darken($primary-color, 50);
+  color: #ffff;
+}
+
+.btn-light {
+  @extend .btn;
+  background: lighten($primary-color, 50);
+  color: #ffff;
+  width: 80%;
+  margin: 0 auto;
+  &:hover {
+    background: $secondary-color;
+    opacity: 0.8;
+    @include easeOut;
+  }
+}
+
+.contact-info{
+  position: relative;
+  background: darken($primary-color, 10);
+  opacity: 0.95;
+  padding: 1.5rem;
+  form{
+    margin: 0 auto;
+  }
+  .btn-email{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 10rem;
+    text-align: center;
+    font-weight: bold;
+    color: $secondary-color;
+    background: darken($primary-color, 20);
+    padding: 1rem;
+    border: 3px solid;
+    &:hover {
+      opacity: 0.6;
+      @include easeOut;
+    }
+  }
+}
+
+#contactform {
+  clear: both;
+  display: table;
+  width: 80%;
+}
+
+#contactform input {
+  clear: both;
+  width: 100%;
+}
+
+#contact textarea{
+  height: 200px;
+  width: 100%;
+}
+
+#main-footer {
+  text-align: center;
+  padding: 0.5rem;
+  background: rgba(darken($primary-color, 10), 0.6);
+  color: #ffff;
+  height: 40px;
+}

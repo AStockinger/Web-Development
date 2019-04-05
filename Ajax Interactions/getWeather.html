@@ -1,0 +1,93 @@
+<!--
+   Name: Amy Stockinger
+   CS 290
+   2/12/2019 
+-->
+
+<!DOCTYPE html>
+    <head>
+        <title>GET Weather</title>
+    </head>
+    <body>
+        <h2>Get the Weather in your area</h2>
+        <form method="get">
+            <fieldset>
+                <label>Enter the city or ZIP code</label>
+                <fieldset>
+                <label>City: <input type="text" id="city"></label>
+                </br>
+                <label>ZIP: <input type="number" id="zip"></label>
+                </br>
+                <button type="submit" id="submit">Submit</button>
+                </fieldset>
+            </fieldset>
+        </form>
+
+        <table>
+            <tr>
+                <th>The Weather:
+            </tr>
+                <td>Temperature: 
+                <td id="temp">
+            <tr>
+                <td>Humidity: 
+                <td id="humid">
+            </tr>
+            <tr>
+                <td>Wind: 
+                <td id="wind">
+            </tr>
+        </table>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', getWeather);
+            function getWeather(){
+                document.getElementById("submit").addEventListener('click', function(e){
+                    var request = new XMLHttpRequest;
+                    var city = document.getElementById("city").value;
+                    var zip = document.getElementById("zip").value;
+                    var appID = "7a0e7c3b9ac4b0d7ab195787b8eabfd0";
+                    var x;
+
+                    if(city.length == 0 && zip.length == 0){
+                        alert("Please fill in information to get the weather!");
+                    }
+                    if(city.length > 0){
+                        x = "https://api.openweathermap.org/data/2.5/weather?q=" + city + ",us&appid=" + appID + "&units=imperial";
+                    }
+                    else{
+                        x = "https://api.openweathermap.org/data/2.5/weather?zip=" + zip + ",us&appid=" + appID + "&units=imperial";
+                    }
+                    request.open("GET", x, true);
+                    request.addEventListener('load', function(){
+                        if(request.status >= 200 && request.status < 400){
+                            var parse = JSON.parse(request.responseText);
+                            document.getElementById("temp").textContent = parse.main.temp;             
+                            document.getElementById("humid").textContent = parse.main.humidity;
+                            document.getElementById("wind").textContent = parse.wind.speed;
+                        }
+                        else if(city.length > 0 && zip.length > 0){
+                            alert("Error in request");
+                        }
+                    });
+                    request.send();
+                    e.preventDefault();
+                });
+            }
+        </script>
+    </body>
+</html>
+
+
+
+if(temperature >= req.body.temp){
+    document.getElementsByTagName('h3')[req.session.toDo.length - 1].setAttribute("class", "green");
+}
+else{
+    document.getElementsByTagName('h3')[req.session.toDo.length - 1].setAttribute("class", "red");
+} 
+}
+}
+
+document.getElementsByClassName("green").style.backgroundColor = "green";
+document.getElementsByClassName("red").style.backgroundColor = "red";

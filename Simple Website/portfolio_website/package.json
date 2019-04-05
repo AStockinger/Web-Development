@@ -1,0 +1,16 @@
+{
+  "name": "portfolio_website",
+  "version": "1.0.0",
+  "description": "responsive portfolio website",
+  "main": "dist/js/main.js",
+  "scripts": {
+    "sass": "node-sass -w scss/ -o dist/css/ -- recursive"
+  },
+  "author": "Amy Stockinger",
+  "license": "MIT",
+  "dependencies": {
+    "chart.js": "^2.7.3",
+    "node-sass": "^4.11.0",
+    "p5": "^0.7.3"
+  }
+}
